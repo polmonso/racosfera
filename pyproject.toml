@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "racosfera"
+version = "0.1.0"
+description = "un raco to play with ecosystems"
+authors = ["pol.monso <pol.monso@somenergia.coop>"]
+license = "GPLv3"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.9.7 || >3.9.7,<4.0"
+streamlit = "^1.22.0"
+
+
+[tool.poetry.group.dev.dependencies]
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

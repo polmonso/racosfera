@@ -1,6 +1,7 @@
 # racosfera
 Ecology simulations
 
+A lot of what you're going to see is inspired by [Stefano Allesina's lecture](https://stefanoallesina.github.io/Sao_Paulo_School/intro.html)
 
 # General Lotka Volterra (GLV)
 

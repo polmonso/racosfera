@@ -1,2 +1,2 @@
 [browser]
-gatherUsageStats = True
+gatherUsageStats = false

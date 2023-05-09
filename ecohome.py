@@ -155,14 +155,13 @@ fig = px.scatter(
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
 
-xvalues, yvalues = np.meshgrid(np.arange(0,3,0.1), np.arange(0, 3, 0.1))
-
-xdot = xvalues -xvalues*yvalues
-ydot = -yvalues + xvalues*yvalues
-
+wolves, rabbits, grass = np.meshgrid(np.arange(0,3,0.1), np.arange(0, 3, 0.1), np.arange(0, 3, 0.1))
+mesh = np.array([wolves, rabbits, grass])
+# TODO make glv support mesh as input
+meshdot = glv(mesh, 0, r, A)
 plt.style.use('dark_background')
 fig, ax = plt.subplots()
-ax.streamplot(xvalues, yvalues, xdot, ydot)
+ax.streamplot(wolves, rabbits, meshdot[0], meshdot[1])
 
 st.pyplot(fig)
 

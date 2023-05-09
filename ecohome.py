@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import plotly.express as px
+import matplotlib.pyplot as plt
+
 
 
 st.markdown('# Generalized Lotka-Volterra sandbox')
@@ -121,11 +123,6 @@ for i in range(numiterations):
     # Update progress bar.
     progress_bar.progress((i + 1)/numiterations)
 
-    foo = A.dot(p[-1])
-    # dx = p[-1]*(r + a.dot(p[-1]))
-    # xi = dx + p[-1]
-    # new_row = np.array([xi])
-
     new_row = p[-1] + glv(p[-1], 1, r, A)
 
     new_row[new_row < 0.0000001] = 0 # prevent numerical problems
@@ -139,11 +136,6 @@ for i in range(numiterations):
 
     # Append data to the chart.
     chart.add_rows(df_new_row)
-
-    # Pretend we're doing some computation that takes time.
-    # time.sleep(0.01)
-
-# status_text.text('Done!')
 
 chart_data = pd.DataFrame(p, columns=species)
 
@@ -161,6 +153,18 @@ fig = px.scatter(
     color=chart_data.index
 )
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
+
+
+xvalues, yvalues = np.meshgrid(np.arange(0,3,0.1), np.arange(0, 3, 0.1))
+
+xdot = xvalues -xvalues*yvalues
+ydot = -yvalues + xvalues*yvalues
+
+plt.style.use('dark_background')
+fig, ax = plt.subplots()
+ax.streamplot(xvalues, yvalues, xdot, ydot)
+
+st.pyplot(fig)
 
 if ballons:
     st.balloons()

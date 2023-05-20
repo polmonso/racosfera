@@ -50,7 +50,7 @@ $x(t+1) = x(t) + x(t)\odot(r + A·x(t))$
 
 The differential representation of the GLV is
 
-$\dfrac{dx_i}{dt} = x_i(\bm{r} + \bm{Ax})$
+$\dfrac{dx_i}{dt} = x_i(\mathbf{r} + \mathbf{Ax})$
 
 $r$ is the intrinsic growth/death rate vector of the N species ($i \in [1..N]$). See the [thoughts](docs/thoughts.md) to extend interpretations.
-\bm{A} is the iner and intra-species impact on one another. In general $a_ii < 0$ so that in abscence of prey the species goes to extintion.
+$\mathbf{A}$ is the iner and intra-species impact on one another. In general $a_{ii} < 0$ so that in abscence of prey the species goes to extintion.

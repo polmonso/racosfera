@@ -3,6 +3,16 @@ Ecology simulations
 
 A lot of what you're going to see is inspired by [Stefano Allesina's lecture](https://stefanoallesina.github.io/Sao_Paulo_School/intro.html)
 
+
+# running
+
+`streamlit run ecohome.py`
+
+
+A running streamlit app [here](
+
+https://polmonso-streamlit-racosfera-ecohome-okep7q.streamlit.app)
+
 # General Lotka Volterra (GLV)
 
 With all lower case as vectors and upper case for matrices. $\odot$ as the pair-wise product.

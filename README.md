@@ -22,23 +22,28 @@ $x(t+1) = x(t) + x(t)\odot(r + A·x(t))$
 For exemple with 3 wolves, 5 rabbits, a reproduction rate of 2 for rabbits and -1 for wolves, while
 wolves grow 2 per rabbit eaten and rabbits lose 1 per wolf. And imagine that the carrying capacity is 20 for each, meaning that as we approach the carrying capacity, they start killing each other.
 
-$$
-\begin{pmatrix}
+$$ \begin{bmatrix}
            🐺_1 \\
-           🐇_1
-\end{pmatrix}
-=
-\begin{pmatrix}
+           🐇_1 \\
+\end{bmatrix} = \begin{pmatrix}
            3 \\
-           5
+           5 \\
 \end{pmatrix} + \begin{pmatrix}
            3 \\
-           5
+           5 \\
 \end{pmatrix}\odot\left(
-    \begin{pmatrix}-1 \\ 2\end{pmatrix}
-    + \begin{pmatrix}1/20 & 2\\ -1 & 1/10\\\end{pmatrix}\begin{pmatrix}3 \\ 5\end{pmatrix}
-\right)
-$$
+    \begin{pmatrix}
+    -1 \\
+    2 \\
+    \end{pmatrix}
+    + \begin{pmatrix}
+    1/20 & 2 \\
+     -1 & 1/10 \\
+     \end{pmatrix}
+     \begin{pmatrix}
+     3 \\ 5 \\
+     \end{pmatrix}
+\right) $$
 
 $x(t+1) = x(t) + x(t)\odot(r + A·x(t))$
 

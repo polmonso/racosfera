@@ -29,8 +29,8 @@ $$ \begin{pmatrix}
    \end{pmatrix} $$
 
 $$ \begin{pmatrix}
-   🐺_1 \\
-   🐇_1 \\
+   w_1 \\
+   r_1 \\
    \end{pmatrix} $$
 
 $$ = \begin{pmatrix}

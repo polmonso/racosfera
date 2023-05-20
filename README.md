@@ -31,15 +31,10 @@ $$ \begin{pmatrix}
 $$ \begin{pmatrix}
    w_1 \\
    r_1 \\
-   \end{pmatrix} $$
-
-$$ = \begin{pmatrix}
+   \end{pmatrix}  = \begin{pmatrix}
    3 \\
    5 \\
-   \end{pmatrix} $$
-
-$$
-   + \begin{pmatrix}
+   \end{pmatrix} + \begin{pmatrix}
            3 \\
            5 \\
    \end{pmatrix}\odot\left(

@@ -9,12 +9,16 @@ import matplotlib.pyplot as plt
 
 st.markdown('# Generalized Lotka-Volterra sandbox')
 
+st.markdown('''
+The Generalized Lotka-Volterra equations define the relation of a group of species as follows (more info below)
+
+$$x' = x\cdot(r + Ax)$$
+''')
+
+
+
 ballons = st.sidebar.checkbox("balloons?", True)
 
-progress_bar = st.progress(0)
-status_text = st.empty()
-equilibrium_text = st.empty()
-equilibrium_eigenvalues_text = st.empty()
 
 species = ['wolf', 'rabbit', 'carrot']
 species = ['🐺', '🐇', '🥕']
@@ -93,10 +97,14 @@ def glv_mesh(mesh_x, r_, A):
 
 equilibrium = -np.linalg.inv(A).dot(r)
 
-st.markdown('''The Jacobian at the equilibrium points is called community matrix.\\
-             For LGV that is $M = J|x^* = D(x^*)·A$''')
+st.markdown(f"Given your parameters we have the following results")
 
-st.markdown(f"Equilibrium point: {equilibrium}")
+progress_bar = st.progress(0)
+status_text = st.empty()
+equilibrium_text = st.empty()
+equilibrium_eigenvalues_text = st.empty()
+
+equilibrium_text.text(f"Equilibrium point: {equilibrium}")
 
 community_matrix = equilibrium*A
 
@@ -104,13 +112,6 @@ eigen = np.linalg.eig(community_matrix)
 
 eigens = eigen[0].tolist()
 
-st.markdown("Eigenvalues:")
-
-eigens
-
-st.markdown("If $Re(\lambda_1) < 0 → x^*$ the equilibrium is stable")
-
-print("")
 
 st.markdown('### Density of each species')
 numiterations = st.number_input('numiterations', value= 150)
@@ -135,6 +136,8 @@ for i in range(numiterations):
 
     # Append data to the chart.
     chart.add_rows(df_new_row)
+
+
 
 chart_data = pd.DataFrame(p, columns=species)
 
@@ -163,6 +166,69 @@ fig2 = px.scatter_3d(chart_data,
 
 st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
 
+experiment_params = {"r": r.tolist(), "A": A.flatten(), "x0": x0}
+
+st.experimental_set_query_params(**experiment_params)
+
+st.markdown('## Share the url with [me](mailto:pol.monso@somenergia.coop) if you found something interesting!')
+experiment_get_params = st.experimental_get_query_params()
+
+st.markdown("## 📣[share]()")
+
+st.markdown('''\
+## Further explanation
+
+The Generalized Lotka-Volterra equations define the relation of a group of species via three parameters:
+
+$r$: The rate of reproduction in the absence of other species
+
+$A$: A matrix that crosses each species against each other and itself. It represents the impact of each species towards the others.
+
+$x0$: The initial density of each species. This is in fact somewhat irrellevant in the long term,\
+it only determines in which local minima the system will orbit around, if there where more than one
+
+Put togehter we get $x'$ the variation of density as
+
+$ x' = x\cdot(r + Ax)$
+''')
+
+st.markdown('''\
+### Important take aways
+
+So in the A matrix, the diagonal shows how does one species impact itself.
+It models the carrying capacity effect, that is, in the absence of other species, how much does my own species hinder my growth?
+
+That means that for predators or species that **need another species to survive** it should be negative.
+
+The difference between the rate r is that r models the rate of reproduction if unbounded. That is, if no other species **nor my own** impact me.
+
+Again, for species that need other species to survive, that would be negative, otherwise there will always be a certain density that, in the absence of any other species, mine can find a positive equilibrium.
+''')
+
+st.markdown('''
+### About equilibrium points
+
+The Jacobian at the equilibrium points is called community matrix.
+
+For LGV that is $M = J|x^* = D(x^*)·A$
+
+The Jacobian tells us what will happen if we move slightly away from the evaluated point (noted with $|x^*$).
+
+Therefore if the real part of the eigenvalues is negative, then the equilibrium is stable because the system will return to the equilibria
+
+$Re(\lambda_1) < 0 → x^*$
+''')
+st.markdown("The Eigenvalues in this current experiment:")
+
+eigens
+
+st.markdown('''
+## Bibliography
+
+I was inspired by many literature, but the best source of documentation I found for this simulator
+are [the talks of Stefano Allesina](https://stefanoallesina.github.io/Sao_Paulo_School/)
+which you can also find [online](https://www.youtube.com/watch?v=loU0O4-dHkw)
+''')
 
 
 def streamplot():
@@ -220,12 +286,3 @@ def streamplot():
 
 if ballons:
     st.balloons()
-
-experiment_params = {"r": r.tolist(), "A": A.flatten(), "x0": x0}
-
-st.experimental_set_query_params(**experiment_params)
-
-st.markdown('## Share the url with [me](mailto:pol.monso@somenergia.coop) if you found something interesting!')
-experiment_get_params = st.experimental_get_query_params()
-
-st.markdown("## [$\Delta$share]()")

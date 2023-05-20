@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 st.markdown('# Generalized Lotka-Volterra sandbox')
 
-ballons = st.sidebar.checkbox("ballons?", True)
+ballons = st.sidebar.checkbox("balloons?", True)
 
 progress_bar = st.progress(0)
 status_text = st.empty()

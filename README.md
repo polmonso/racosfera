@@ -24,8 +24,8 @@ wolves grow 2 per rabbit eaten and rabbits lose 1 per wolf. And imagine that the
 
 $$
 \begin{pmatrix}
-           🐺_1 \\
-           🐇_1
+           w_1 \\
+           r_1
 \end{pmatrix}
 =
 \begin{pmatrix}

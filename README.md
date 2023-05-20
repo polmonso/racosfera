@@ -31,7 +31,9 @@ $$ \begin{pmatrix}
 $$ \begin{pmatrix}
    🐺_1 \\
    🐇_1 \\
-   \end{pmatrix} = \begin{pmatrix}
+   \end{pmatrix} $$
+
+$$ = \begin{pmatrix}
    3 \\
    5 \\
    \end{pmatrix} $$

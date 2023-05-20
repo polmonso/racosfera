@@ -9,9 +9,9 @@ A lot of what you're going to see is inspired by [Stefano Allesina's lecture](ht
 `streamlit run ecohome.py`
 
 
-A running streamlit app [here](
+A running streamlit app [here](https://polmonso-streamlit-racosfera-ecohome-okep7q.streamlit.app)
 
-https://polmonso-streamlit-racosfera-ecohome-okep7q.streamlit.app)
+
 
 # General Lotka Volterra (GLV)
 

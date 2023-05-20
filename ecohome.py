@@ -16,21 +16,19 @@ status_text = st.empty()
 equilibrium_text = st.empty()
 equilibrium_eigenvalues_text = st.empty()
 
-species = ['wolf', 'rabbit', 'grass']
+species = ['wolf', 'rabbit', 'carrot']
+species = ['🐺', '🐇', '🥕']
+
 
 num_species = len(species)
 
 nice_settings = [
-    {
-        'x0': [0.6, 1.44, 10.0],
-        'r': [-0.3, 0.08, 0.82],
-        'A': [[-0.1, 0.2, 0],
-              [-0.3, 0.1, 0.1],
-              [0, -0.2, -0.04]]
-    },
     'http://localhost:8502/?r=-0.3&r=0.08&r=0.8&A=-0.1&A=0.2&A=0.0&A=-0.3&A=-0.1&A=0.1&A=0.0&A=-0.2&A=-0.04&x0=0.6&x0=1.5&x0=10.0',
     'http://localhost:8502/?r=-0.62&r=0.86&r=-1.0&A=-0.05&A=0.25&A=0.0&A=-0.2&A=-0.1&A=0.0&A=0.0&A=0.0&A=1.0&x0=1.46&x0=2.79&x0=0.0',
-    'http://localhost:8503/?r=-0.57&r=0.08&r=0.8&A=-0.1&A=0.2&A=0.0&A=-0.3&A=-0.1&A=0.1&A=0.0&A=-0.2&A=-0.04&x0=0.6&x0=1.5&x0=10.0'
+    'http://localhost:8503/?r=-0.57&r=0.08&r=0.8&A=-0.1&A=0.2&A=0.0&A=-0.3&A=-0.1&A=0.1&A=0.0&A=-0.2&A=-0.04&x0=0.6&x0=1.5&x0=10.0',
+    'http://localhost:8501/?r=-0.45&r=0.08&r=0.8&A=-0.1&A=0.25&A=0.0&A=-0.3&A=-0.1&A=0.1&A=0.0&A=-0.2&A=-0.04&x0=0.6&x0=1.5&x0=10.0',
+    'http://localhost:8501/?r=-0.32&r=0.04&r=0.48&A=-0.1&A=0.4&A=0.0&A=-0.3&A=-0.1&A=0.1&A=0.0&A=-0.2&A=-0.04&x0=0.6&x0=1.5&x0=10.0',
+    'http://localhost:8501/?r=-0.32&r=-0.05&r=0.48&A=-0.1&A=0.4&A=0.0&A=-0.3&A=-0.1&A=0.1&A=0.0&A=-0.2&A=-0.04&x0=0.6&x0=1.5&x0=10.0'
 ]
 
 x0 = [0.6, 1.5, 10.0]
@@ -50,41 +48,28 @@ if 'initialized' not in st.session_state:
     x0 = np.array(get_query_params.get('x0', x0)).astype(float)
     r = np.array(get_query_params.get('r', r)).astype(float)
 
-    st.session_state['A'] = A
-    st.session_state['x0'] = x0
-    st.session_state['r'] = r
-
-if 'A' in st.session_state:
-    A = st.session_state['A']
-
-if 'x0' in st.session_state:
-    x0 = st.session_state['x0']
-
-if 'r' in st.session_state:
-    r = st.session_state['r']
-
-print('')
-print(f'x0: {x0} r: {r} A: {A}')
 
 wolves_0 = st.sidebar.slider('Starting wolves', 0.0, 10.0, value=float(x0[0]))
 rabbits_0 = st.sidebar.slider('Starting rabbits', 0.0, 10.0, value=float(x0[1]))
-grass_0 = st.sidebar.slider('Starting grass', 0.0, 10.0, value=float(x0[2]))
+carrot_0 = st.sidebar.slider('Starting carrot', 0.0, 10.0, value=float(x0[2]))
 
-x0 = [wolves_0, rabbits_0, grass_0]
+x0 = [wolves_0, rabbits_0, carrot_0]
 
 p = np.array([x0])
 
 r_wolves = st.sidebar.slider('Rate wolves', -1.0, 1.0, float(r[0]))
 r_rabbits = st.sidebar.slider('Rate rabbits', -1.0, 1.0, float(r[1]))
-r_grass = st.sidebar.slider('Rate grass', -1.0, 1.0, float(r[2]))
-r = np.array([r_wolves, r_rabbits, r_grass])
+r_carrot = st.sidebar.slider('Rate carrot', -1.0, 1.0, float(r[2]))
+r = np.array([r_wolves, r_rabbits, r_carrot])
 
 df_p = pd.DataFrame(p, columns=species)
 
-st.sidebar.markdown("Interaction Matrix A")
+st.sidebar.markdown('''Interaction Matrix A 🐺 🐇 🥕''')
 # interaction matrix
 
 A = st.sidebar.experimental_data_editor(A)
+
+print(f'sidebar\nx0: {x0} r: {r} A: {A}')
 
 def glv(x, t, r, A):
 
@@ -155,23 +140,24 @@ chart_data = pd.DataFrame(p, columns=species)
 
 st.dataframe(chart_data, use_container_width=True)
 
-# chart_data['rabbit+grass'] = chart_data['rabbit'] + chart_data['grass']
+# chart_data['rabbit+carrot'] = chart_data['rabbit'] + chart_data['carrot']
 
 # chart_xy = st.line_chart(chart_data, x='wolf', y='rabbit')
 
 fig = px.scatter(
     chart_data,
-    x="wolf",
-    y="rabbit",
+    x="🐺",
+    y="🐇",
     hover_name=chart_data.index,
-    color=chart_data.index
+    color=chart_data.index,
+    labels={'🐺':'🐺 wolves','🐇':'🐇 rabbits'}
 )
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
 fig2 = px.scatter_3d(chart_data,
-    x="wolf",
-    y="rabbit",
-    z="grass",
+    x="🐺",
+    y="🐇",
+    z="🥕",
     hover_name=chart_data.index,
     color=chart_data.index)
 
@@ -183,8 +169,8 @@ def streamplot():
 
     # plotly streamlines do not look good either, there's probably something wrong in my reshaping
 
-    wolves, rabbits, grass = np.meshgrid(np.arange(0.1,3.1,0.1), np.arange(0.1, 3.1, 0.1), np.arange(5, 8, 0.1))
-    mesh = np.vstack([wolves.ravel(), rabbits.ravel(), grass.ravel()])
+    wolves, rabbits, carrot = np.meshgrid(np.arange(0.1,3.1,0.1), np.arange(0.1, 3.1, 0.1), np.arange(5, 8, 0.1))
+    mesh = np.vstack([wolves.ravel(), rabbits.ravel(), carrot.ravel()])
 
     meshdot = glv_mesh(mesh, r, A)
 
@@ -226,7 +212,7 @@ def streamplot():
     # w = meshdot.T[2][:].reshape(30,30,30)
 
     # ax2 = plt.figure().add_subplot(projection='3d')
-    # ax2.quiver(wolves, rabbits, grass, u, v, w, length=0.1, normalize=True)
+    # ax2.quiver(wolves, rabbits, carrot, u, v, w, length=0.1, normalize=True)
 
     # plt.show()
 

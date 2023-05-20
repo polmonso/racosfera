@@ -31,13 +31,13 @@ $$ \begin{pmatrix}
 $$ \begin{bmatrix}
            🐺_1 \\
            🐇_1 \\
-\end{bmatrix} = \begin{pmatrix}
+   \end{bmatrix} = \begin{pmatrix}
            3 \\
            5 \\
-\end{pmatrix} + \begin{pmatrix}
+   \end{pmatrix} + \begin{pmatrix}
            3 \\
            5 \\
-\end{pmatrix}\odot\left(
+   \end{pmatrix}\odot\left(
     \begin{pmatrix}
     -1 \\
     2 \\
@@ -49,7 +49,7 @@ $$ \begin{bmatrix}
      \begin{pmatrix}
      3 \\ 5 \\
      \end{pmatrix}
-\right) $$
+   \right) $$
 
 $x(t+1) = x(t) + x(t)\odot(r + A·x(t))$
 

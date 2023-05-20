@@ -28,13 +28,15 @@ $$ \begin{pmatrix}
    g & h & i \\
    \end{pmatrix} $$
 
-$$ \begin{bmatrix}
-           🐺_1 \\
-           🐇_1 \\
-   \end{bmatrix} = \begin{pmatrix}
-           3 \\
-           5 \\
-   \end{pmatrix} + \begin{pmatrix}
+$$ \begin{pmatrix}
+   🐺_1 \\
+   🐇_1 \\
+   \end{pmatrix} = \begin{pmatrix}
+   3 \\
+   5 \\
+   \end{pmatrix} $$
+
+   + \begin{pmatrix}
            3 \\
            5 \\
    \end{pmatrix}\odot\left(

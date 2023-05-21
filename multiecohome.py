@@ -23,7 +23,7 @@ $$x' = x\cdot(r + Ax)$$
 #     </style>
 # ''',unsafe_allow_html=True)
 
-default_num_species = 3
+default_num_species = 10
 
 num_species = st.sidebar.slider('Number of species', 1, 10, default_num_species)
 
@@ -159,10 +159,12 @@ for i in range(numiterations):
     # Append data to the chart.
     chart.add_rows(df_new_row)
 
-
+st.markdown('## Share the url with [me](mailto:pol.monso@somenergia.coop) if you found something interesting!')
+st.markdown("## 📣[share]()")
 
 chart_data = pd.DataFrame(sim, columns=names)
 st.dataframe(chart_data)
+
 
 if ballons:
     st.balloons()

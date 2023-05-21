@@ -10,6 +10,13 @@ You have a running streamlit app [here](https://polmonso-streamlit-racosfera-eco
 
 Alternativelly, you can run it locally. Install with `poetry install`, run with `streamlit run ecohome.py`
 
+## multispecies
+
+The multispecies version of the app is running here [here](https://polmonso-streamlit-racosfera-multiecohome-vteq5l.streamlit.app)
+
+Run locally with `streamlit run multiecohome.py`
+
+
 # General Lotka Volterra (GLV)
 
 With all lower case as vectors and upper case for matrices. $\odot$ as the pair-wise product.

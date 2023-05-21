@@ -95,6 +95,15 @@ species_symbols = cross_matrix['index'][1:num_species]
 
 species_meta_df = st.sidebar.experimental_data_editor(species_meta_df, num_rows="dynamic")
 
+if len(species_meta_df) < num_species:
+    num_species = len(species_meta_df)
+    current_species = species_meta_df.index.to_list()
+
+    previous_species = species_data.index.to_list()
+    removed_species = [species for species in previous_species if species not in current_species]
+    species_data = species_data.drop(labels=removed_species, axis=0)
+    species_data = species_data.drop(labels=removed_species, axis=1)
+
 cross = st.sidebar.experimental_data_editor(species_data)
 
 experiment_params = {"num": num_species, "m": species_meta_df.to_numpy().flatten(), "A": cross.to_numpy().flatten()}

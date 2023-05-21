@@ -5,7 +5,7 @@ import plotly.figure_factory as ff
 import matplotlib.pyplot as plt
 import pandas as pd
 
-ballons = st.checkbox("balloons?", True)
+ballons = st.sidebar.checkbox("balloons?", True)
 
 st.markdown('# Generalized Lotka-Volterra sandbox')
 

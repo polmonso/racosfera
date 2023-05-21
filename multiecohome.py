@@ -50,6 +50,8 @@ species_data = [
 
 st.sidebar.markdown('reproduction is positive for species that survive alone (e.g. plants) and negative otherwise (e.g. carnivores and herbivores).')
 
+st.sidebar.markdown('You can remove a species by selecting its row and pressing Delete')
+
 cross_matrix = {'index':
     ['symbol',  '🐺', '🐇',  '🥕',  '🦊', '🐦',  '🐝', '🐛', '🐟',  '🌱',  '🍒',  '🌿'],
     'cross':
@@ -170,6 +172,8 @@ for i in range(numiterations):
 
 st.markdown('## Share the url with [me](mailto:pol.monso@somenergia.coop) if you found something interesting!')
 st.markdown("## 📣[share]()")
+
+st.markdown('Reading the query params is not yet supported sorry!')
 
 chart_data = pd.DataFrame(sim, columns=names)
 st.dataframe(chart_data)

@@ -106,15 +106,6 @@ default_cross_matrix = default_cross_matrix.set_index('symbol')
 default_cross_matrix = default_cross_matrix.iloc[0:num_species,0:num_species]
 cross = st.sidebar.experimental_data_editor(default_cross_matrix)
 
-# experimental_data_editor only returns lists, we need to rebuild the df
-
-# species_meta_df = pd.DataFrame(columns=default_species_meta_columns, data=species_meta_list)
-# species_meta_df = species_meta_df.set_index('symbol')
-
-# cross_df = pd.DataFrame(columns=cross_matrix_columns, data=default_cross_matrix)
-# cross_df = cross_df.set_index('symbol')
-
-
 # TODO getting from params it's gonna be a bit tricky now
 
 # if len(species_meta_df) < num_species:

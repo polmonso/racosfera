@@ -52,6 +52,8 @@ symbols = [species[0] for species in default_species_meta]
 
 st.sidebar.markdown('reproduction is positive for species that survive alone (e.g. plants) and negative otherwise (e.g. carnivores and herbivores).')
 
+st.sidebar.markdown('You can **edit the values** by double-clicking. Read the explanation to avoid kill everything :)')
+
 st.sidebar.markdown('You can remove a species by selecting its row and pressing Delete')
 
 cross_matrix_columns = [

@@ -52,6 +52,9 @@ st.sidebar.markdown('reproduction is positive for species that survive alone (e.
 
 st.sidebar.markdown('You can remove a species by selecting its row and pressing Delete')
 
+st.sidebar.markdown('You can **edit the values** by double-clicking. Read the explanation to avoid kill everything :)')
+
+
 cross_matrix = {'index':
     ['symbol',  '🐺', '🐇',  '🥕',  '🦊', '🐦',  '🐝', '🐛', '🐟',  '🌱',  '🍒',  '🌿'],
     'cross':

@@ -170,7 +170,7 @@ for i in range(numiterations):
     # Append data to the chart.
     chart.add_rows(df_new_row)
 
-st.markdown('## Share the url with [me](mailto:pol.monso@somenergia.coop) if you found something interesting!')
+st.markdown('## Share the url at my [discord](https://discord.gg/RDEXTjf) or [tweet me](https://twitter.com/catclicli) if you found something interesting!')
 st.markdown("## 📣[share]()")
 
 st.markdown('Reading the query params is not yet supported sorry!')

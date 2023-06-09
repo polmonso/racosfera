@@ -170,10 +170,8 @@ experiment_params = {"r": r.tolist(), "A": A.flatten(), "x0": x0}
 
 st.experimental_set_query_params(**experiment_params)
 
-st.markdown('## Share the url with [me](mailto:pol.monso@somenergia.coop) if you found something interesting!')
+st.markdown('## 📣 Share the url at my [discord](https://discord.gg/RDEXTjf) or [tweet me](https://twitter.com/catclicli) if you found something interesting!')
 experiment_get_params = st.experimental_get_query_params()
-
-st.markdown("## 📣[share]()")
 
 st.markdown('''\
 ## Further explanation
